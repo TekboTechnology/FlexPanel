@@ -1,0 +1,381 @@
+---
+title: File Structure Guide
+description: Complete guide to folder structure and file paths
+---
+
+# File Structure Guide
+
+## Overview
+
+Understanding where to put your files is crucial. This guide shows you exactly where everything goes.
+
+---
+
+## Root Folder Structure
+
+Your website has this basic structure:
+
+```
+your-website/
+├── settings/
+│   ├── config.jsonc
+│   ├── pages.jsonc
+│   ├── projects.jsonc
+│   └── lang.jsonc
+├── assets/
+│   ├── media/
+│   │   ├── img/
+│   │   │   ├── main/
+│   │   │   ├── home/
+│   │   │   ├── project-categories/
+│   │   │   ├── projects/
+│   │   │   └── others/
+│   │   └── fonts/
+│   └── pages/
+│       ├── markdown/
+│       │   ├── projects/
+│       │   └── others/
+│       └── pdf/
+│           └── projects/
+├── public/
+└── src/
+```
+
+---
+
+## Settings Files
+
+### Where: `/settings/`
+
+This folder contains all your configuration files:
+
+| File | Purpose |
+|------|---------|
+| `config.jsonc` | Website appearance, colors, logo, SEO |
+| `pages.jsonc` | Categories (Projects) and pages (About, Contact) |
+| `projects.jsonc` | Your actual work samples |
+| `lang.jsonc` | Text labels and translations |
+
+---
+
+## Image Files
+
+### Where: `/assets/media/img/`
+
+#### Main Website Images
+
+```
+assets/media/img/
+└── main/
+    ├── logo/
+    │   ├── light.webp      (600x200)
+    │   └── dark.webp       (600x200)
+    ├── loader-logo/
+    │   ├── light.webp      (200x200)
+    │   └── dark.webp      (200x200)
+    ├── icon/
+    │   ├── favicon.webp    (32x32)
+    │   └── apple-touch-icon.webp (180x180)
+    └── seo/
+        ├── opengraph.webp  (1200x630)
+        └── twitter-card.webp (1200x628)
+```
+
+#### Home Page Images
+
+```
+assets/media/img/
+└── home/
+    ├── carousel/                    (2000x1000 recommended)
+    │   ├── hero-1.webp
+    │   ├── hero-2.webp
+    │   └── hero-3.webp
+    ├── recommendedProject/           (1260x720 recommended)
+    │   ├── hero-1.webp
+    │   └── hero-2.webp
+    ├── partnersCarousel/              (400x200)
+    │   └── examplePartner/
+    │       ├── examplePartner-dark.webp
+    │       └── examplePartner-light.webp
+    ├── ourServices/                   (variable)
+    │   └── architecture.webp
+    ├── ourProjects/                   (720x1260)
+    │   └── markdownView.webp
+    └── comments/                      (150x150)
+        └── 1.webp
+```
+
+#### Project Category Images
+
+```
+assets/media/img/
+└── project-categories/
+    ├── appearances/
+    │   └── banner.webp               (1500x500)
+    ├── residential/
+    │   └── banner.webp
+    ├── commercial/
+    │   └── banner.webp
+    └── [your-category-name]/
+        └── banner.webp
+```
+
+#### Project Images
+
+```
+assets/media/img/
+└── projects/
+    ├── appearance1/                  (Your project folder)
+    │   ├── banner.webp               (1500x500 - cover)
+    │   ├── banner-og.webp            (1200x630 - social)
+    │   ├── banner-tc.webp            (1200x628 - twitter)
+    │   ├── hero-1.webp               (1920x1080 - slider)
+    │   ├── hero-2.webp
+    │   └── hero-3.webp
+    ├── project-name-2/
+    └── [your-project-name]/
+```
+
+#### Others (Pages) Images
+
+```
+assets/media/img/
+└── others/
+    ├── about/
+    │   ├── banner.webp               (1500x500)
+    │   ├── banner-og.webp            (1200x630)
+    │   └── banner-tc.webp            (1200x628)
+    ├── services/
+    │   └── banner.webp
+    └── [your-page-name]/
+```
+
+---
+
+## Content Files
+
+### Where: `/assets/pages/`
+
+#### Markdown Files (For Markdown & Page View Projects)
+
+```
+assets/pages/
+└── markdown/
+    ├── projects/
+    │   ├── appearance1/
+    │   │   └── example.md
+    │   └── [your-project-name]/
+    │       └── content.md
+    └── others/
+        ├── about.md
+        └── [your-page-name].md
+```
+
+**Markdown File Example:**
+```markdown
+# Project Title
+
+## Overview
+This is the project description...
+
+## Details
+- Year: 2024
+- Location: New York
+- Area: 500 sqm
+
+## Images
+![Project Image](/assets/media/img/projects/your-project/1.webp)
+
+## Conclusion
+This project showcases...
+```
+
+#### PDF Files (For PDF View Projects)
+
+```
+assets/pages/
+└── pdf/
+    └── projects/
+        ├── project-name/
+        │   ├── project-name_dark.pdf
+        │   └── project-name_light.pdf
+        └── [your-project]/
+            ├── [project]_dark.pdf
+            └── [project]_light.pdf
+```
+
+---
+
+## Font Files
+
+### Where: `/assets/fonts/`
+
+```
+assets/fonts/
+└── Montserrat/
+    └── static/
+        ├── Montserrat-Bold.ttf
+        ├── Montserrat-Regular.ttf
+        └── Montserrat-SemiBold.ttf
+└── Roboto/
+    └── static/
+        ├── Roboto-Bold.ttf
+        └── Roboto-Regular.ttf
+```
+
+---
+
+## Quick Reference: Image Sizes
+
+| Location | Image Type | Recommended Size |
+|----------|-----------|------------------|
+| Main Logo | Logo | 600 x 200 px |
+| Favicon | Icon | 32 x 32 px |
+| Apple Touch | Icon | 180 x 180 px |
+| SEO/Social | OpenGraph | 1200 x 630 px |
+| SEO/Social | Twitter | 1200 x 628 px |
+| Category Banner | Banner | 1500 x 500 px |
+| Project Cover | Banner | 1500 x 500 px |
+| Carousel | Hero Image | 2000 x 1000 px |
+| Project Slider | Image | 1920 x 1080 px |
+| Home Project Card | Thumbnail | 1260 x 720 px |
+| Partner Logo | Logo | 400 x 200 px |
+| Avatar/User Photo | Avatar | 150 x 150 px |
+
+---
+
+## URL Path Reference
+
+### For Pages.jsonc
+
+| Page Type | URL Field Example |
+|-----------|------------------|
+| Home | (default) |
+| Contact | "/contact" |
+| Projects | "/projects" |
+| Category | "/appearances" |
+| Others Page | "/about" |
+
+### For Projects.jsonc
+
+| Project | URL Field Example |
+|---------|------------------|
+| Project in category | "/page-view" (becomes: /projects/appearances/page-view) |
+
+### Full URL Structure
+
+```
+Home:           yoursite.com/
+Contact:        yoursite.com/contact
+Projects List:  yoursite.com/projects
+Category:       yoursite.com/projects/appearances
+  Project:      yoursite.com/projects/appearances/page-view
+About:          yoursite.com/about
+Services:       yoursite.com/services
+```
+
+---
+
+## Common Mistakes to Avoid
+
+### Mistake 1: Wrong Image Path
+```json
+// ❌ Wrong
+"img": "/assets/media/projects/image.webp"
+
+// ✅ Correct
+"img": "/assets/media/img/projects/project-name/image.webp"
+```
+
+### Mistake 2: Forgetting /img/ in Path
+```json
+// ❌ Wrong
+"img": "/assets/media/project-categories/..."
+
+// ✅ Correct  
+"img": "/assets/media/img/project-categories/..."
+```
+
+### Mistake 3: Wrong Category Key
+```json
+// pages.jsonc has: "residential": { "base": { "projectKey": "residential" } }
+
+// ❌ Wrong - key doesn't match
+"parentKey": "category1"
+
+// ✅ Correct - matches pages.jsonc
+"parentKey": "residential"
+```
+
+### Mistake 4: Spaces in Folder Names
+```json
+// ❌ Wrong
+"img": "/assets/media/img/projects/My Project/image.webp"
+
+// ✅ Correct - use hyphens or underscores
+"img": "/assets/media/img/projects/my-project/image.webp"
+```
+
+---
+
+## Creating Folders: Step by Step
+
+### Step 1: For a New Category
+
+1. Create folder: `assets/media/img/project-categories/your-category/`
+2. Upload banner image: `banner.webp`
+3. (Optional) Add SEO images: `banner-og.webp`, `banner-tc.webp`
+
+### Step 2: For a New Project
+
+1. Create folder: `assets/media/img/projects/your-project/`
+2. Upload images:
+   - `banner.webp` (cover)
+   - `banner-og.webp` (social)
+   - `banner-tc.webp` (twitter)
+   - `1.webp`, `2.webp` (slider images)
+
+### Step 3: For Markdown Content
+
+1. Create folder: `assets/pages/markdown/projects/your-project/`
+2. Create file: `content.md`
+3. Write your content
+
+---
+
+## File Format Recommendations
+
+### Use WebP Format
+Always prefer `.webp` format for images:
+- ✅ `.webp` - Best quality, smallest file size
+- ✅ `.png` - Good for transparency
+- ✅ `.jpg` - Acceptable for photos
+- ❌ `.gif` - Only for animations
+
+### Image Optimization Tips
+1. Compress images before uploading
+2. Use appropriate sizes (not too large)
+3. Use consistent aspect ratios for similar images
+
+---
+
+## Summary
+
+Key takeaways:
+
+1. **Images go in** `/assets/media/img/`
+2. **Content goes in** `/assets/pages/`
+3. **Settings go in** `/settings/`
+4. **Always use correct paths** - check twice!
+5. **Use WebP format** for best performance
+
+---
+
+## Next Steps
+
+Now you know where everything goes! Start building:
+
+➡ **[Getting Started](/docs.page/getting-started)** - Quick start
+➡ **[Config Guide](/docs.page/config)** - Appearance settings
+➡ **[Pages Guide](/docs.page/pages)** - Create categories
+➡ **[Projects Guide](/docs.page/projects)** - Add projects

@@ -1,0 +1,297 @@
+---
+title: Config.jsonc Guide
+description: Complete guide to configure website appearance, colors, logo, and SEO settings
+---
+
+# Config.jsonc - Complete Guide
+
+## What is config.jsonc?
+
+This file controls your website's **look and feel**. Think of it as your website's "control center" - it decides everything about how your site looks and behaves.
+
+**File Location:** `settings/config.jsonc`
+
+---
+
+## Main Sections
+
+### 1. Website Base Settings
+
+This is where you set your basic business information.
+
+```json
+"website": {
+  "base": {
+    "name": "Your Company Name",
+    "desc": "Short description of your business",
+    "keywords": "keyword1, keyword2, keyword3",
+    "logo": { ... },
+    "favicon": "/path/to/favicon.webp",
+    "domain": "yourdomain.com",
+    "timezone": "America/New_York"
+  }
+}
+```
+
+| Setting | What It Does | Example |
+|---------|--------------|---------|
+| `name` | Your company name | "Great Architecture" |
+| `desc` | Business description | "Modern architecture firm" |
+| `keywords` | SEO keywords (Google searches) | "architecture, building, design" |
+| `logo` | Your company logo | See logo section below |
+| `favicon` | Browser tab icon (32x32) | "/assets/.../favicon.webp" |
+| `domain` | Your website address | "myfirm.com" |
+| `timezone` | Your location time | "America/New_York" |
+
+---
+
+### 2. Logo Settings
+
+Logos appear in multiple places - you need different versions:
+
+```json
+"logo": {
+  "fix": "/assets/media/img/main/logo/light.webp",
+  "dark": "/assets/media/img/main/logo/dark.webp",
+  "light": "/assets/media/img/main/logo/light.webp"
+}
+```
+
+| Logo Type | When It's Used | Recommended Size |
+|-----------|---------------|------------------|
+| `fix` | Default logo | 600 x 200 px |
+| `dark` | Dark mode background | 600 x 200 px |
+| `light` | Light mode background | 600 x 200 px |
+
+**Pro Tip:** Always use `.webp` format for faster loading!
+
+---
+
+### 3. Navigation Bar Text
+
+You can add a announcement banner above the menu:
+
+```json
+"navText": {
+  "text": "📢 **Important** [Click here](https://example.com) for news!",
+  "fixedInvisible": false
+}
+```
+
+- `text` → Leave empty `""` to hide completely
+- `fixedInvisible` → Hide bar after scrolling (true/false)
+
+---
+
+### 4. Contact Floating Button
+
+The small chat bubble in the bottom-right corner:
+
+```json
+"contactFab": {
+  "enable": true,
+  "draggable": true,
+  "whatsapp": true,
+  "mail": true,
+  "phone": true
+}
+```
+
+| Setting | What It Does |
+|---------|--------------|
+| `enable` | Show/hide the button (true/false) |
+| `draggable` | Let users move it around |
+| `whatsapp` | Show WhatsApp option |
+| `mail` | Show email option |
+| `phone` | Show phone option |
+
+---
+
+### 5. SEO Settings (OpenGraph)
+
+When someone shares your website on social media, this controls what appears:
+
+```json
+"opengraph": {
+  "enable": true,
+  "title": "My Architecture Firm",
+  "description": "We design beautiful buildings",
+  "image": "/assets/media/img/main/seo/opengraph.webp",
+  "type": "website"
+}
+```
+
+**Why important?** 
+- When you share your site link on Facebook, WhatsApp, or LinkedIn
+- Shows a preview card with your image and text
+- Recommended image size: 1200 x 630 pixels
+
+---
+
+### 6. Twitter/X Card Settings
+
+Similar to OpenGraph but specifically for Twitter/X:
+
+```json
+"twitterCard": {
+  "enable": true,
+  "card": "summary_large_image",
+  "title": "My Architecture Firm",
+  "description": "We design beautiful buildings",
+  "image": "/assets/media/img/main/seo/twitter-card.webp"
+}
+```
+
+| Setting | What It Does |
+|---------|--------------|
+| `card` | "summary_large_image" = big preview image |
+| `title` | Title shown on Twitter |
+| `description` | Description shown on Twitter |
+| `image` | Image shown on Twitter (1200x628) |
+
+---
+
+### 7. Theme/Colors
+
+This is where you make your site beautiful with colors!
+
+#### Light Mode Colors
+
+```json
+"colors": {
+  "light": {
+    "primaryAccent": {
+      "first": "#0077B6",
+      "second": "#FF6B6B"
+    },
+    "text": "#212121",
+    "background": "#FFFFFF"
+  }
+}
+```
+
+#### Dark Mode Colors
+
+```json
+"colors": {
+  "dark": {
+    "primaryAccent": {
+      "first": "#00B4D8",
+      "second": "#FF6B6B"
+    },
+    "text": "#E0E0E0",
+    "background": "#121212"
+  }
+}
+```
+
+**Color Guide:**
+
+| Color Name | What It Colors |
+|------------|---------------|
+| `primaryAccent.first` | Main buttons, links, important elements |
+| `primaryAccent.second` | Secondary highlights |
+| `text` | Main text color |
+| `subtext` | Descriptions, smaller text |
+| `background` | Page background |
+| `borderAccent` | Lines, borders |
+
+---
+
+### 8. Fonts
+
+Choose fonts for different parts of your text:
+
+```json
+"fonts": {
+  "headings": {
+    "name": "Montserrat",
+    "file": "/assets/fonts/Montserrat/static/Montserrat-Bold.ttf"
+  },
+  "body": {
+    "name": "Roboto",
+    "file": "/assets/fonts/Roboto/static/Roboto-Regular.ttf"
+  },
+  "buttons": {
+    "name": "Montserrat-SemiBold",
+    "file": "/assets/fonts/Montserrat/static/Montserrat-SemiBold.ttf"
+  }
+}
+```
+
+**How to change fonts:**
+1. Download font from Google Fonts
+2. Put font files in `/assets/fonts/` folder
+3. Update the `name` and `file` paths above
+
+---
+
+## Complete Example
+
+Here's a simple config.jsonc setup for an architecture firm:
+
+```jsonc
+{
+  "website": {
+    "base": {
+      "name": "Modern Architects",
+      "desc": "Creating beautiful spaces since 2010",
+      "keywords": "architecture, interior design, building",
+      "logo": {
+        "fix": "/assets/media/img/main/logo/light.webp",
+        "dark": "/assets/media/img/main/logo/dark.webp",
+        "light": "/assets/media/img/main/logo/light.webp"
+      },
+      "favicon": "/assets/media/img/main/icon/favicon.webp",
+      "domain": "modernarchitects.com",
+      "timezone": "America/New_York"
+    },
+    "opengraph": {
+      "enable": true,
+      "title": "Modern Architects - Beautiful Buildings",
+      "description": "We design modern homes and commercial buildings",
+      "image": "/assets/media/img/main/seo/opengraph.webp",
+      "type": "website"
+    }
+  },
+  "theme": {
+    "colors": {
+      "light": {
+        "primaryAccent": {
+          "first": "#0077B6",
+          "second": "#FF6B6B"
+        },
+        "text": "#212121"
+      },
+      "dark": {
+        "primaryAccent": {
+          "first": "#00B4D8",
+          "second": "#FF6B6B"
+        },
+        "text": "#E0E0E0"
+      }
+    }
+  }
+}
+```
+
+---
+
+## Quick Checklist
+
+Before launching your site, check:
+
+- [ ] Company name is correct
+- [ ] Logo images are uploaded
+- [ ] Favicon is set (appears in browser tab)
+- [ ] SEO images are ready (1200x630)
+- [ ] Colors match your brand
+- [ ] Domain name is set
+
+---
+
+## Next Steps
+
+Now that your config is ready, learn how to create categories:
+
+➡ **[Pages Guide](/docs.page/pages)** - Create your project categories

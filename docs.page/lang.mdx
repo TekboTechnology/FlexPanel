@@ -1,0 +1,286 @@
+---
+title: Lang.jsonc Guide
+description: Learn how to translate your website text and labels
+---
+
+# Lang.jsonc - Complete Guide
+
+## What is lang.jsonc?
+
+This file contains all the **text labels** used throughout your website. If you want to change any text that appears on buttons, titles, or messages, you do it here.
+
+**File Location:** `settings/lang.jsonc`
+
+---
+
+## Structure
+
+```json
+{
+  "settings": {
+    "inLanguage": "en"
+  },
+  "data": {
+    "lightDark": "Light / Dark Theme",
+    "cardGoUrl": "View",
+    "viewMoreProjects": "Explore More Projects",
+    ...
+  }
+}
+```
+
+---
+
+## Language Setting
+
+```json
+"settings": {
+  "inLanguage": "en"
+}
+```
+
+This sets your website's language tag. Common codes:
+
+| Code | Language |
+|------|----------|
+| `en` | English |
+| `tr` | Turkish |
+| `de` | German |
+| `fr` | French |
+| `es` | Spanish |
+| `ar` | Arabic |
+
+You can find more codes at: https://r12a.github.io/app-subtags
+
+---
+
+## Text Labels
+
+Here's every text label you can customize:
+
+### Navigation & Buttons
+
+| Key | Default Text | Where It Appears |
+|-----|--------------|------------------|
+| `cardGoUrl` | "View" | Project view button |
+| `viewMoreProjects` | "Explore More Projects" | Home page projects section |
+| `SeeAll` | "See all..." | See all link |
+| `go` | "Go" | Navigation button |
+
+### Messages & Alerts
+
+| Key | Default Text | When It Shows |
+|-----|--------------|----------------|
+| `notStatistic` | "No statistics found." | When no statistics are added |
+| `notOurServices` | "Our services could not be found!" | When services section is empty |
+| `notOurProjects` | "No projects found!" | When no projects exist |
+| `promotionalVideoNoLink` | "Promotional Video Link Missing!" | When YouTube link is missing |
+| `googleMapEmbedNoLink` | "Google Maps Embed Link Missing!" | When Google Maps not configured |
+| `markdown_not_found` | "Text could not be loaded" | When markdown file not found |
+| `linksNoFound` | "Social Media Links Not Found!" | When no social links added |
+| `notComments` | "No comments found!" | When testimonials section empty |
+| `notRecommendedProjects` | "No Featured Projects Found!" | When no featured projects |
+| `notFAQsAccordion` | "Frequently Asked Questions Not Found!" | When FAQ section empty |
+| `notWhyChooseUs` | "Why Choose Us Section Not Found!" | When Why Choose Us empty |
+| `notPartnersCarousel` | "Partners Section Not Found!" | When partners section empty |
+
+### Contact & Communication
+
+| Key | Default Text | Purpose |
+|-----|--------------|---------|
+| `addressTitle` | "Address" | Address section header |
+| `workHours` | "Working Hours" | Business hours header |
+| `linksTitle` | "Links" | Links section header |
+| `contactTitles` | "Communication" | Contact info header |
+| `writeForProjectWhatsapp` | "Please message me on WhatsApp regarding the project." | WhatsApp message template |
+| `writeForProjectMail` | "Write to us via email for the project" | Email button text |
+| `sendProjectMsg` | "I would like to receive information about the %U project." | Email message template |
+
+### Page Titles
+
+| Key | Default Text | Where It Appears |
+|-----|--------------|------------------|
+| `pagesTitle` | "Pages" | Pages navigation |
+| `projectTitles` | "Projects" | Projects navigation |
+| `otherTitles` | "Other" | Others navigation |
+| `statisticsTitle` | "Statistics" | Statistics section header |
+| `FAQsAccordionTitle` | "Frequently Asked Questions" | FAQ section header |
+| `servicesTitle` | "Our Services" | Services section header |
+| `promotionVideoTitle` | "Our Promotional Video" | Video section header |
+| `featuredProjectsTitle` | "Featured Projects" | Featured projects header |
+| `ourProjectsTitle` | "Our Projects" | Projects section header |
+| `whyChooseUsTitle` | "Why Choose Us?" | Why Choose Us section header |
+| `partnersCarouselTitle` | "Our Partners" | Partners section header |
+| `commentsTitle` | "Comments" | Testimonials header |
+
+### Error Pages
+
+| Key | Default Text | When It Shows |
+|-----|--------------|----------------|
+| `NotFoundTitle` | "Page not found" | 404 error page title |
+| `NotFoundDesc` | "We're sorry, we couldn't find the page you were looking for." | 404 error message |
+| `NotFoundBackText` | "Back to Home" | Button to return home |
+
+### Special Messages
+
+| Key | Default Text | Purpose |
+|-----|--------------|---------|
+| `lightDark` | "Light / Dark Theme" | Theme toggle label |
+| `pressAndHoldToDrag` | "Press and hold to drag" | Floating button drag hint |
+| `GoToCategory` | "Go to Category" | Category navigation |
+| `successSitemapCreated` | "Sitemap.xml and robots.txt generated successfully." | Sitemap success message |
+| `onlyGetAllowed` | "Only GET requests are allowed." | API error message |
+
+---
+
+## How to Change Text
+
+### Example 1: Change Button Text
+
+Original:
+```json
+"cardGoUrl": "View",
+```
+
+Change to:
+```json
+"cardGoUrl": "See Details",
+```
+
+### Example 2: Change Section Titles
+
+Original:
+```json
+"ourProjectsTitle": "Our Projects",
+```
+
+For an architecture firm:
+```json
+"ourProjectsTitle": "Our Portfolio",
+```
+
+For a construction company:
+```json
+"ourProjectsTitle": "Completed Projects",
+```
+
+### Example 3: Change Error Messages
+
+Original:
+```json
+"notOurProjects": "No projects found!",
+```
+
+Change to:
+```json
+"notOurProjects": "Check back soon for our latest work!",
+```
+
+---
+
+## Complete Example
+
+Here's a customized lang.jsonc for a real estate company:
+
+```jsonc
+{
+  "settings": {
+    "inLanguage": "en"
+  },
+  "data": {
+    "lightDark": "Light / Dark Mode",
+    "cardGoUrl": "View Property",
+    "viewMoreProjects": "View All Properties",
+    "notStatistic": "Market statistics coming soon.",
+    "notOurServices": "Our services will be available soon!",
+    "notOurProjects": "No properties currently available.",
+    "addressTitle": "Office Location",
+    "workHours": "Property Viewings",
+    "servicesTitle": "Our Services",
+    "ourProjectsTitle": "Featured Properties",
+    "featuredProjectsTitle": "Highlighted Listings",
+    "whyChooseUsTitle": "Why Choose Us?",
+    "commentsTitle": "Client Reviews",
+    "FAQsAccordionTitle": "Common Questions"
+  }
+}
+```
+
+---
+
+## Translation Guide
+
+If you want to translate your website to another language:
+
+### Step 1: Change Language Code
+
+```json
+"settings": {
+  "inLanguage": "tr"  // Change to Turkish
+}
+```
+
+### Step 2: Translate All Labels
+
+```json
+"data": {
+  "lightDark": "Açık / Koyu Tema",
+  "cardGoUrl": "Görüntüle",
+  "viewMoreProjects": "Daha Fazla Proje Gör",
+  "addressTitle": "Adres",
+  "workHours": "Çalışma Saatleri",
+  "servicesTitle": "Hizmetlerimiz",
+  "ourProjectsTitle": "Projelerimiz"
+}
+```
+
+---
+
+## Pro Tips
+
+### Tip 1: Keep Messages Friendly
+Instead of "No projects found!", use "Coming soon!" or "Check back later!"
+
+### Tip 2: Match Your Industry
+- Architecture: Use "Portfolio", "Completed Works", "Designs"
+- Construction: Use "Projects", "Built Structures", "Developments"
+- Real Estate: Use "Properties", "Listings", "Available Units"
+- Interior Design: Use "Designs", "Spaces", "Interiors"
+- Agency: Use "Campaigns", "Case Studies", "Work"
+- Portfolio: Use "Works", "Creations", "Projects"
+
+### Tip 3: Test After Changes
+Always refresh your website after changing lang.jsonc to make sure text displays correctly.
+
+---
+
+## Quick Checklist
+
+After editing lang.jsonc, check:
+
+- [ ] All text fits in buttons (not too long)
+- [ ] Special characters display correctly (ç, ğ, ş, etc.)
+- [ ] Text matches your brand voice
+- [ ] No empty strings ("")
+
+---
+
+## Summary
+
+The lang.jsonc file is simple:
+1. Find the text you want to change
+2. Replace the text inside the quotes
+3. Save and refresh your site
+
+That's it! No technical knowledge needed.
+
+---
+
+## Next Steps
+
+Now you know how to customize text. Full documentation:
+
+➡ **[Getting Started](/docs.page/getting-started)** - Quick start guide
+➡ **[Config Guide](/docs.page/config)** - Website appearance
+➡ **[Pages Guide](/docs.page/pages)** - Creating categories
+➡ **[Projects Guide](/docs.page/projects)** - Adding your work

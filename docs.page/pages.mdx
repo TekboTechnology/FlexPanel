@@ -1,0 +1,356 @@
+---
+title: Pages.jsonc Guide
+description: Learn how to create categories for projects and other pages like About Us, Contact
+---
+
+# Pages.jsonc - Complete Guide
+
+## What is pages.jsonc?
+
+This file is like the **table of contents** for your website. It defines:
+- What pages exist on your site
+- How pages are organized (categories)
+- What each page shows
+
+**File Location:** `settings/pages.jsonc`
+
+---
+
+## Main Sections
+
+### 1. Home Page
+
+The main landing page - first thing visitors see:
+
+```json
+"home": {
+  "settings": {
+    "icon": "heroicons:home-solid",
+    "name": "Home"
+  },
+  "data": {
+    "carousel": { ... },
+    "recommendedProject": { ... },
+    "partnersCarousel": { ... },
+    "statistic": { ... },
+    "whyChooseUs": { ... },
+    "ourServices": { ... },
+    "ourProjects": { ... },
+    "promotionalVideo": { ... },
+    "comments": { ... },
+    "FAQsAccordion": { ... }
+  }
+}
+```
+
+**Sections you can customize:**
+
+| Section | What It Shows |
+|---------|--------------|
+| `carousel` | Big hero images that slide |
+| `recommendedProject` | Featured projects on home |
+| `partnersCarousel` | Client/partner logos |
+| `statistic` | Numbers (years, projects completed) |
+| `whyChooseUs` | Why clients should choose you |
+| `ourServices` | List of your services |
+| `ourProjects` | Preview of your projects |
+| `promotionalVideo` | YouTube video embed |
+| `comments` | Customer testimonials/reviews |
+| `FAQsAccordion` | Frequently asked questions |
+
+**To hide any section:** Set `"enable": false`
+
+---
+
+### 2. Contact Page
+
+How visitors can reach you:
+
+```json
+"contact": {
+  "settings": {
+    "icon": "majesticons:phone",
+    "name": "Contact",
+    "url": "/contact"
+  },
+  "data": {
+    "countryTelCode": "US",
+    "tel": "+12125550123",
+    "mail": "contact@example.com",
+    "address": {
+      "streetAddress": "123 Main Street",
+      "addressLocality": "New York",
+      "addressCountry": "United States"
+    },
+    "googleMaps": "https://www.google.com/maps/embed?pb=...",
+    "workingHours": {
+      "in": "Monday / Friday: 08:00 - 18:00",
+      "jsonld": "Mo-Fr 08:00-18:00"
+    },
+    "social": [
+      { "icon": "skill-icons:instagram", "name": "Instagram", "url": "https://instagram.com/..." }
+    ]
+  }
+}
+```
+
+**Contact Information Fields:**
+
+| Field | What It Is |
+|-------|-----------|
+| `countryTelCode` | Country code (ISO format: US, TR, GB, etc.) |
+| `tel` | Phone number with country code |
+| `mail` | Email address |
+| `address` | Physical office address |
+| `googleMaps` | Google Maps embed link |
+| `workingHours` | When you're open for business |
+| `social` | Social media links (Instagram, LinkedIn, etc.) |
+
+**How to get Google Maps embed link:**
+1. Go to Google Maps
+2. Search your address
+3. Click "Share"
+4. Click "Embed a map"
+5. Copy the HTML and get the URL
+
+---
+
+### 3. Projects Page (Categories)
+
+This is where you create **project categories** like "Residential", "Commercial", "Interior", etc.
+
+```json
+"projects": {
+  "settings": {
+    "icon": "bxs:category-alt",
+    "name": "Projects",
+    "url": "/projects",
+    "desc": "Description for SEO"
+  },
+  "data": {
+    "category1": {
+      "base": {
+        "projectKey": "category1",
+        "icon": "ooui:appearance",
+        "img": "/assets/media/img/project-categories/appearances/banner.webp",
+        "title": "Appearances",
+        "url": "/appearances",
+        "desc": "Category description"
+      }
+    }
+  }
+}
+```
+
+**Creating a New Category:**
+
+```json
+"category2": {
+  "base": {
+    "projectKey": "category2",
+    "icon": "ooui:appearance",
+    "img": "/assets/media/img/project-categories/your-category/banner.webp",
+    "title": "Your Category Name",
+    "url": "/your-category-url",
+    "desc": "Description of this category"
+  }
+}
+```
+
+**Category Fields Explained:**
+
+| Field | What It Does | Example |
+|-------|--------------|---------|
+| `projectKey` | Unique ID (must be unique!) | "category2" |
+| `icon` | Icon from Iconify | "ooui:appearance" |
+| `img` | Banner image (1500x500) | "/assets/.../banner.webp" |
+| `title` | Display name | "Residential Projects" |
+| `url` | Website URL path | "/residential" |
+| `desc` | SEO description | "Our residential buildings" |
+
+**Category Examples by Profession:**
+
+| Profession | Category Examples |
+|------------|------------------|
+| **Architecture** | "Residential", "Commercial", "Public Buildings" |
+| **Construction** | "Buildings", "Roads", "Bridges", "Infrastructure" |
+| **Real Estate** | "For Sale", "For Rent", "New Projects", "Land" |
+| **Interior Design** | "Living Spaces", "Kitchens", "Bathrooms", "Offices" |
+| **Agency** | "Branding", "Digital Marketing", "Social Media" |
+| **Portfolio** | "Photography", "Graphic Design", "Case Studies" |
+
+---
+
+### 4. Others Page (Additional Pages)
+
+This section creates additional pages like "About Us", "Services", etc.
+
+```json
+"others": {
+  "settings": {
+    "enable": true,
+    "icon": "material-symbols:other-admission",
+    "name": "Others",
+    "url": "/others"
+  },
+  "data": {
+    "about": {
+      "base": {
+        "icon": "ix:about-filled",
+        "title": "About Us",
+        "desc": "Learn about our company",
+        "url": "/about",
+        "keywords": "about, company, team",
+        "img": "/assets/media/img/others/about/banner.webp"
+      },
+      "opengraph": { ... },
+      "twitterCard": { ... },
+      "mdpatch": "/assets/pages/markdown/others/about.md"
+    }
+  }
+}
+```
+
+**Creating a New "Others" Page:**
+
+```json
+"yourPageName": {
+  "base": {
+    "icon": "icon-name-from-iconify",
+    "title": "Page Title",
+    "desc": "Page description",
+    "url": "/page-url",
+    "keywords": "keyword1, keyword2",
+    "img": "/assets/media/img/others/yourPageName/banner.webp"
+  },
+  "opengraph": {
+    "enable": true,
+    "title": "Share Title",
+    "description": "Share description",
+    "image": "/assets/media/img/others/yourPageName/banner-og.webp",
+    "type": "website"
+  },
+  "twitterCard": {
+    "enable": true,
+    "card": "summary_large_image",
+    "title": "Twitter Title",
+    "description": "Twitter description",
+    "image": "/assets/media/img/others/yourPageName/banner-tc.webp"
+  },
+  "mdpatch": "/assets/pages/markdown/others/yourPageName.md"
+}
+```
+
+---
+
+## How to Create Unlimited Categories & Pages
+
+### For Projects (Categories):
+
+1. **Add new category in pages.jsonc:**
+   ```json
+   "category2": {
+     "base": {
+       "projectKey": "category2",
+       "icon": "your-icon",
+       "img": "/path/to/banner.webp",
+       "title": "New Category",
+       "url": "/new-category",
+       "desc": "Description"
+     }
+   }
+   ```
+
+2. **Create folder for images:**
+   ```
+   /assets/media/img/project-categories/new-category/
+   ```
+
+3. **Upload banner image** (1500x500 pixels)
+
+---
+
+### For Others (Additional Pages):
+
+1. **Add new page in pages.jsonc:**
+   ```json
+   "services": {
+     "base": {
+       "icon": "icon-name",
+       "title": "Our Services",
+       "desc": "What we offer",
+       "url": "/services",
+       "keywords": "services, offerings",
+       "img": "/assets/media/img/others/services/banner.webp"
+     },
+     "mdpatch": "/assets/pages/markdown/others/services.md"
+   }
+   ```
+
+2. **Create markdown file:**
+   ```
+   /assets/pages/markdown/others/services.md
+   ```
+
+3. **Write your content** in the markdown file
+
+---
+
+## Important Rules
+
+### Rule 1: Unique Keys
+Every category and page MUST have a unique key:
+- ✅ Good: `"category1"`, `"category2"`, `"about"`, `"services"`
+- ❌ Bad: `"category1"`, `"category1"` (duplicate!)
+
+### Rule 2: Matching URLs
+URLs should be clean and match the category name:
+- ✅ Good: `/residential`, `/commercial`, `/about-us`
+- ❌ Bad: `/Residential`, `/random-name`
+
+### Rule 3: Image Paths
+Always use the correct path structure:
+- Project categories: `/assets/media/img/project-categories/[category-name]/banner.webp`
+- Others pages: `/assets/media/img/others/[page-name]/banner.webp`
+
+---
+
+## URL Structure
+
+Your website URLs will look like this:
+
+```
+Home:           yourdomain.com/
+Contact:        yourdomain.com/contact
+Projects:       yourdomain.com/projects
+  Category:     yourdomain.com/projects/residential
+    Project:    yourdomain.com/projects/residential/villa-123
+Others:         yourdomain.com/others
+  About:        yourdomain.com/about
+  Services:     yourdomain.com/services
+```
+
+---
+
+## Quick Reference: Icons
+
+We use **Iconify** for icons. Find icons at: https://icon-sets.iconify.design/
+
+**Common icons:**
+
+| Page Type | Example Icon |
+|-----------|-------------|
+| Home | `heroicons:home-solid` |
+| Contact | `majesticons:phone` |
+| Projects | `bxs:category-alt` |
+| About | `ix:about-filled` |
+| Services | `material-symbols:design-services` |
+| Portfolio | `streamline:markdown-document-programming-solid` |
+
+---
+
+## Next Steps
+
+Now that you understand pages, learn how to add actual projects:
+
+➡ **[Projects Guide](/docs.page/projects)** - Add your work samples

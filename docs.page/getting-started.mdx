@@ -1,0 +1,175 @@
+---
+title: Getting Started
+description: Learn how to configure your website step by step
+---
+
+# Getting Started Guide
+
+## Welcome
+
+This guide will help you understand how to configure your website easily. We will explain everything in simple terms - no technical knowledge required!
+
+---
+
+## What is This System?
+
+Think of your website like a **restaurant menu**:
+
+- **config.jsonc** = Restaurant settings (name, colors, logo)
+- **pages.jsonc** = Menu categories (Projects, About Us, Contact)
+- **projects.jsonc** = Individual dishes (your actual projects)
+- **lang.jsonc** = Translations (words in different languages)
+
+---
+
+## Quick Setup Flow
+
+### Step 1: Basic Settings (config.jsonc)
+
+This file controls your website's **identity**. Just like a business card!
+
+```json
+{
+  "website": {
+    "base": {
+      "name": "Your Company Name",
+      "desc": "What does your company do?",
+      "logo": {
+        "fix": "/path/to/logo.webp"
+      }
+    }
+  }
+}
+```
+
+**What you need to change:**
+- `name` → Your company name
+- `desc` → Short description of your business
+- `logo` → Your logo image file
+
+---
+
+### Step 2: Create Categories (pages.jsonc)
+
+Categories are like **folders** in a filing cabinet. Each category holds related projects together.
+
+**Example for different professions:**
+
+| Profession | Example Categories |
+|------------|-------------------|
+| Architect | "Residential", "Commercial", "Interior" |
+| Construction | "Buildings", "Roads", "Infrastructure" |
+| Real Estate | "Sale", "Rent", "Land" |
+| Interior Design | "Living Rooms", "Kitchens", "Offices" |
+| Agency | "Branding", "Digital", "Marketing" |
+| Portfolio | "Photography", "Designs", "Case Studies" |
+
+---
+
+### Step 3: Add Projects (projects.jsonc)
+
+Projects are the **actual work samples** you want to show.
+
+Each project needs:
+- A title (what you call it)
+- A description (brief explanation)
+- Images (photos of the work)
+- Category (which folder it belongs to)
+
+---
+
+## Understanding the Relationship
+
+```
+pages.jsonc          projects.jsonc
+    │                    │
+    ├── "category1" ─────┼──► project1
+    │                    ├──► project2
+    ├── "category2" ─────┼──► project3
+    │                    └──► project4
+    └── "category3" ─────┼──► project5
+                         └──► project6
+```
+
+**Important:** Categories in `projects.jsonc` (parentKey) MUST match categories in `pages.jsonc`!
+
+---
+
+## File Path Guide
+
+### Where to put your images?
+
+```
+/assets/media/
+    ├── img/
+    │   ├── main/
+    │   │   └── logo/
+    │   ├── project-categories/
+    │   │   └── [category-name]/
+    │   ├── projects/
+    │   │   └── [project-name]/
+    │   ├── home/
+    │   │   ├── carousel/
+    │   │   ├── recommendedProject/
+    │   │   └── partnersCarousel/
+    │   └── others/
+    │       ├── about/
+    │       └── [page-name]/
+```
+
+### Where to put your content files?
+
+```
+/assets/pages/
+    ├── markdown/
+    │   ├── projects/
+    │   │   └── [project-name].md
+    │   └── others/
+    │       └── [page-name].md
+    └── pdf/
+        └── projects/
+            └── [project-name]_dark.pdf
+            └── [project-name]_light.pdf
+```
+
+---
+
+## Pro Tips
+
+### 1. Image Sizes
+- **Logo**: 600 x 200 pixels (horizontal)
+- **Category Banner**: 1500 x 500 pixels
+- **Project Images**: 1920 x 1080 pixels (best quality)
+- **Partner Logos**: 400 x 200 pixels
+
+### 2. URL Structure
+- Category URL: `/category-name` (e.g., `/projects`, `/residences`)
+- Project URL: `/category-name/project-name` (e.g., `/projects/modern-villa`)
+
+### 3. Always Test
+After making changes:
+1. Save your JSON file
+2. Refresh your website
+3. Check that everything looks correct
+
+---
+
+## Need More Help?
+
+Each section has detailed documentation:
+
+- **[Config Guide](/docs.page/config)** - Website appearance and colors
+- **[Pages Guide](/docs.page/pages)** - Categories and navigation
+- **[Projects Guide](/docs.page/projects)** - Adding your work samples
+- **[Language Guide](/docs.page/lang)** - Translating your content
+
+---
+
+## Summary
+
+1. **Start with config.jsonc** → Set your company name and logo
+2. **Create categories in pages.jsonc** → Define your project folders
+3. **Add projects in projects.jsonc** → Upload your actual work
+4. **Add images to correct folders** → Keep everything organized
+
+That's it! You're ready to build your website!

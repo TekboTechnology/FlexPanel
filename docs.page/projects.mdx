@@ -1,0 +1,459 @@
+---
+title: Projects.jsonc Guide
+description: Learn how to add your work samples - projects, portfolios, case studies
+---
+
+# Projects.jsonc - Complete Guide
+
+## What is projects.jsonc?
+
+This file contains **your actual work samples**. While `pages.jsonc` creates the categories (folders), `projects.jsonc` fills them with content (files).
+
+Think of it like:
+- `pages.jsonc` = Empty folders labeled "Residential", "Commercial"
+- `projects.jsonc` = Actual project files inside those folders
+
+**File Location:** `settings/projects.jsonc`
+
+---
+
+## Project Structure
+
+Each project has several parts:
+
+```json
+"project1": {
+  "parentKey": "category1",
+  "base": { ... },
+  "opengraph": { ... },
+  "twitterCard": { ... },
+  "pageIn": { ... }
+}
+```
+
+---
+
+## Step-by-Step: Creating a New Project
+
+### Step 1: Define Parent Category
+
+```json
+"myProject": {
+  "parentKey": "category1"
+}
+```
+
+**Important:** The `parentKey` must match a category from `pages.jsonc`!
+
+| If your category in pages.jsonc is... | Use this parentKey in projects.jsonc |
+|--------------------------------------|-------------------------------------|
+| `"category1"` | `"category1"` |
+| `"residential"` | `"residential"` |
+| `"commercial"` | `"commercial"` |
+
+---
+
+### Step 2: Basic Information
+
+```json
+"base": {
+  "title": "Modern Villa Design",
+  "img": "/assets/media/img/projects/my-project/banner.webp",
+  "desc": "A beautiful modern villa with minimalist design",
+  "keywords": "villa, modern, architecture, residential",
+  "url": "/modern-villa"
+}
+```
+
+| Field | What It Does | Example |
+|-------|--------------|---------|
+| `title` | Project name | "Modern Villa" |
+| `img` | Cover image (1500x500) | "/assets/.../banner.webp" |
+| `desc` | Short description for lists | "Beautiful modern home" |
+| `keywords` | SEO keywords | "villa, modern, home" |
+| `url` | URL path | "/modern-villa" |
+
+---
+
+### Step 3: SEO Settings (Optional but Recommended)
+
+**OpenGraph (Facebook, LinkedIn, WhatsApp):**
+
+```json
+"opengraph": {
+  "enable": true,
+  "title": "Modern Villa - Architecture Firm",
+  "description": "Check out this beautiful modern villa project",
+  "image": "/assets/media/img/projects/my-project/banner-og.webp",
+  "type": "website"
+}
+```
+
+**Twitter/X Card:**
+
+```json
+"twitterCard": {
+  "enable": true,
+  "card": "summary_large_image",
+  "title": "Modern Villa - Architecture Firm",
+  "description": "Check out this beautiful modern villa project",
+  "image": "/assets/media/img/projects/my-project/banner-tc.webp"
+}
+```
+
+---
+
+### Step 4: Content Type (The Most Important Part!)
+
+This defines **how your project page looks**. You have 3 options:
+
+#### Option A: Page View (Inline Content)
+
+Best for: Adding images and text directly in JSON
+
+```json
+"pageIn": {
+  "settings": {
+    "select": "page"
+  },
+  "data": {
+    "page": {
+      "title": "Modern Villa Design",
+      "desc": "Full description of the project...",
+      "settings": {
+        "returnCategoryEnable": true
+      },
+      "images": {
+        "settings": {
+          "autoplay": true,
+          "autoplaySpeed": 3000,
+          "animSpeed": 500,
+          "arrows": true,
+          "infinite": true
+        },
+        "data": [
+          "/assets/media/img/projects/my-project/1.webp",
+          "/assets/media/img/projects/my-project/2.webp",
+          "/assets/media/img/projects/my-project/3.webp"
+        ]
+      }
+    }
+  }
+}
+```
+
+#### Option B: Markdown View
+
+Best for: Long-form content, documentation, blog posts
+
+```json
+"pageIn": {
+  "settings": {
+    "select": "mdpatch"
+  },
+  "data": {
+    "mdpatch": "/assets/pages/markdown/projects/my-project.md"
+  }
+}
+```
+
+**How to create markdown content:**
+1. Create folder: `/assets/pages/markdown/projects/`
+2. Create file: `my-project.md`
+3. Write content using Markdown format
+
+**Markdown Example:**
+```markdown
+# Modern Villa Project
+
+## Overview
+This is a beautiful modern villa located in...
+
+## Details
+- Location: New York
+- Year: 2024
+- Area: 500 sqm
+
+## Gallery
+![Villa Exterior](/assets/media/img/projects/my-project/1.webp)
+
+## Conclusion
+This project showcases...
+```
+
+#### Option C: PDF View
+
+Best for: Brochures, catalogs, formal documents
+
+```json
+"pageIn": {
+  "settings": {
+    "select": "pdf"
+  },
+  "data": {
+    "pdf": {
+      "dark": "/assets/pages/pdf/projects/my-project_dark.pdf",
+      "light": "/assets/pages/pdf/projects/my-project_light.pdf"
+    }
+  }
+}
+```
+
+**PDF Requirements:**
+- One PDF for dark mode
+- One PDF for light mode
+- Recommended size: A4 or Letter
+
+---
+
+## Image Slider Settings
+
+When using "page" content type, you can customize the image slider:
+
+```json
+"images": {
+  "settings": {
+    "autoplay": true,        // Auto-slide images (true/false)
+    "autoplaySpeed": 3000,   // Time between slides (milliseconds)
+    "animSpeed": 500,        // Transition speed
+    "arrows": true,          // Show navigation arrows
+    "infinite": true         // Loop continuously
+  },
+  "data": [
+    "/assets/.../image1.webp",
+    "/assets/.../image2.webp",
+    "/assets/.../image3.webp"
+  ]
+}
+```
+
+| Setting | What It Does |
+|---------|--------------|
+| `autoplaySpeed` | 1000 = 1 second, 3000 = 3 seconds |
+| `animSpeed` | Lower = faster animation |
+| `arrows` | Show < > buttons on images |
+| `infinite` | When reaching last image, go to first |
+
+---
+
+## Complete Project Example
+
+Here's a full example for an architecture project:
+
+```jsonc
+"modernVilla": {
+  "parentKey": "residential",
+  "base": {
+    "title": "Modern Villa with Pool",
+    "img": "/assets/media/img/projects/modern-villa/banner.webp",
+    "desc": "A stunning modern villa featuring an infinity pool and panoramic views",
+    "keywords": "villa, pool, modern architecture, luxury home",
+    "url": "/modern-villa-pool"
+  },
+  "opengraph": {
+    "enable": true,
+    "title": "Modern Villa with Pool - Our Latest Project",
+    "description": "Explore this beautiful modern villa featuring an infinity pool",
+    "image": "/assets/media/img/projects/modern-villa/banner-og.webp",
+    "type": "website"
+  },
+  "twitterCard": {
+    "enable": true,
+    "card": "summary_large_image",
+    "title": "Modern Villa with Pool",
+    "description": "A stunning modern villa with infinity pool",
+    "image": "/assets/media/img/projects/modern-villa/banner-tc.webp"
+  },
+  "pageIn": {
+    "settings": {
+      "select": "page"
+    },
+    "data": {
+      "page": {
+        "title": "Modern Villa with Pool",
+        "desc": "This project represents modern living at its finest...",
+        "settings": {
+          "returnCategoryEnable": true
+        },
+        "images": {
+          "settings": {
+            "autoplay": true,
+            "autoplaySpeed": 4000,
+            "animSpeed": 600,
+            "arrows": true,
+            "infinite": true
+          },
+          "data": [
+            "/assets/media/img/projects/modern-villa/1.webp",
+            "/assets/media/img/projects/modern-villa/2.webp",
+            "/assets/media/img/projects/modern-villa/3.webp",
+            "/assets/media/img/projects/modern-villa/4.webp"
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+## Project Examples by Profession
+
+### For Architects:
+
+```json
+"project": {
+  "parentKey": "commercial",
+  "base": {
+    "title": "Office Building Downtown",
+    "desc": "A 20-story modern office building",
+    "url": "/office-building-downtown"
+  }
+}
+```
+
+### For Construction Companies:
+
+```json
+"project": {
+  "parentKey": "buildings",
+  "base": {
+    "title": "Shopping Mall Construction",
+    "desc": "Complete construction of a shopping mall",
+    "url": "/shopping-mall-construction"
+  }
+}
+```
+
+### For Real Estate:
+
+```json
+"project": {
+  "parentKey": "sale",
+  "base": {
+    "title": "Luxury Apartment for Sale",
+    "desc": "3 bedroom luxury apartment in city center",
+    "url": "/luxury-apartment-sale"
+  }
+}
+```
+
+### For Interior Designers:
+
+```json
+"project": {
+  "parentKey": "living-rooms",
+  "base": {
+    "title": "Minimalist Living Room",
+    "desc": "Clean and modern living room design",
+    "url": "/minimalist-living-room"
+  }
+}
+```
+
+### For Agencies:
+
+```json
+"project": {
+  "parentKey": "branding",
+  "base": {
+    "title": "Brand Identity for Tech Startup",
+    "desc": "Complete branding package including logo, colors, guidelines",
+    "url": "/brand-identity-tech-startup"
+  }
+}
+```
+
+### For Portfolio:
+
+```json
+"project": {
+  "parentKey": "photography",
+  "base": {
+    "title": "Fashion Photography Collection",
+    "desc": "Editorial fashion shoot for magazine",
+    "url": "/fashion-photography-collection"
+  }
+}
+```
+
+---
+
+## File Structure
+
+Your project images should be organized like this:
+
+```
+/assets/
+  media/
+    img/
+      projects/
+        project-name/
+          banner.webp          (1500x500 - cover image)
+          banner-og.webp       (1200x630 - social share)
+          banner-tc.webp       (1200x628 - Twitter share)
+          1.webp               (1920x1080 - slider image 1)
+          2.webp               (1920x1080 - slider image 2)
+          3.webp               (1920x1080 - slider image 3)
+
+/assets/
+  pages/
+    markdown/
+      projects/
+        project-name.md        (for markdown view)
+
+    pdf/
+      projects/
+        project-name_dark.pdf  (for PDF dark mode)
+        project-name_light.pdf (for PDF light mode)
+```
+
+---
+
+## Important Rules
+
+### Rule 1: Match Parent Category
+The `parentKey` MUST match a category in `pages.jsonc`:
+```json
+// pages.jsonc has: "residential": { "base": { "projectKey": "residential" } }
+// projects.jsonc must use: "parentKey": "residential"
+```
+
+### Rule 2: Unique Project Keys
+Each project needs a unique key at the top:
+```json
+"project1": { ... },
+"project2": { ... },
+"myUniqueProjectName": { ... }
+```
+
+### Rule 3: Unique URLs
+Each project URL must be unique:
+```json
+"url": "/modern-villa"     // ✓ Good
+"url": "/modern-villa"     // ✗ Bad - duplicate!
+```
+
+---
+
+## Quick Checklist
+
+Before publishing a project, verify:
+
+- [ ] `parentKey` matches a category in pages.jsonc
+- [ ] `title` is descriptive and clear
+- [ ] `img` path is correct
+- [ ] `url` is unique and clean
+- [ ] Images are uploaded to correct folder
+- [ ] Content type (`select`) is set correctly
+- [ ] SEO images are ready (for opengraph/twitter)
+
+---
+
+## Next Steps
+
+Now you know how to create projects. Check out:
+
+➡ **[Pages Guide](/docs.page/pages)** - To understand categories
+➡ **[Config Guide](/docs.page/config)** - To customize appearance
