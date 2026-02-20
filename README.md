@@ -4,7 +4,9 @@ Welcome to the documentation folder. This contains all the guides you need to co
 
 ## Quick Start
 
-Go to **[docs/index.mdx](/index.mdx)** to begin!
+Quickly go to read the **[documentation](https://docs.page/TekboTechnology/FlexPanel)**!
+
+Go to **[docs/index.mdx](docs/index.mdx)** to begin!
 
 ## What's Inside?
 
